@@ -5,9 +5,10 @@ from .MNIST import MNIST_ as MNIST
 from .CIFAR import CIFAR10_ as CIFAR10
 from .CIFAR import CIFAR100_ as CIFAR100
 from .ImageNet import ImageNet_ as ImageNet
+from .Caltech import Caltech256_ as Caltech256
+from .Caltech import Caltech101_ as Caltech101
 from typing import Union
 from .Features import Features
-
 
 __all__ = [
     "load_dataset",
@@ -16,6 +17,8 @@ __all__ = [
     "CIFAR10",
     "CIFAR100",
     "ImageNet",
+    "Caltech256",
+    "Caltech101",
     "DatasetWrapper",
     "Features",
 ]
@@ -25,6 +28,8 @@ dataset_list = {
     "CIFAR-10": CIFAR10,
     "CIFAR-100": CIFAR100,
     "ImageNet-1k": ImageNet,
+    "Caltech-256": Caltech256,
+    "Caltech-101": Caltech101,
 }
 
 
@@ -39,7 +44,7 @@ def load_dataset(
     shuffle_seed: int | None = None,
     *args,
     **kwargs
-) -> Union[MNIST, CIFAR10, CIFAR100, ImageNet]:
+) -> Union[MNIST, CIFAR10, CIFAR100, ImageNet, Caltech256, Caltech101]:
     return dataset_list[name](
         root=root,
         train=train,
